@@ -3,11 +3,13 @@ import { Button } from '@/components/ui/button';
 
 const Sidebar = ({ currentStep, setCurrentStep, className = '' }) => {
   const steps = [
-    { id: 1, title: 'Problema-objeto' },
-    { id: 2, title: 'Identidade e Horizontes' },
-    { id: 3, title: 'Análise do Contexto' },
-    { id: 4, title: 'Plano de Ações' },
-    { id: 5, title: 'Implementação' }
+    { id: 1, title: 'Delimitação do Problema-objeto' },
+    { id: 2, title: 'Análise Situacional' },
+    { id: 3, title: 'Definição de Objetivos' },
+    { id: 4, title: 'Estratégias e Ações' },
+    { id: 5, title: 'Monitoramento e Avaliação' },
+    { id: 6, title: 'Implementação e Sustentabilidade' },
+    { id: 7, title: 'Finalização' },
   ];
 
   return (
@@ -23,22 +25,12 @@ const Sidebar = ({ currentStep, setCurrentStep, className = '' }) => {
               key={step.id}
               variant={currentStep === step.id ? "default" : "ghost"}
               onClick={() => setCurrentStep(step.id)}
-              className="w-full justify-start"
+              className="w-full justify-start text-sm"
             >
               Passo {step.id}: {step.title}
             </Button>
           ))}
         </nav>
-
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <Button
-            variant={currentStep === 6 ? "default" : "ghost"}
-            onClick={() => setCurrentStep(6)}
-            className="w-full justify-start"
-          >
-            Finalização
-          </Button>
-        </div>
       </div>
     </aside>
   );

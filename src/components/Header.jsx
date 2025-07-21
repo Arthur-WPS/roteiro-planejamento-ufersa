@@ -37,8 +37,8 @@ const Header = ({ currentStep, setCurrentStep, onGeneratePDF, onSaveData, onRese
       }
     };
     
-    // Contar campos dos passos 1-5 (excluir metadata)
-    ['step1', 'step2', 'step3', 'step4', 'step5'].forEach(step => {
+    // Contar campos dos passos 1-6 (excluir metadata)
+    ['step1', 'step2', 'step3', 'step4', 'step5', 'step6'].forEach(step => {
       if (data[step]) {
         countFields(data[step]);
       }
@@ -50,12 +50,13 @@ const Header = ({ currentStep, setCurrentStep, onGeneratePDF, onSaveData, onRese
   const progress = calculateProgress();
 
   const steps = [
-    { id: 1, title: 'Problema-objeto', short: 'Passo 1' },
-    { id: 2, title: 'Identidade e Horizontes', short: 'Passo 2' },
-    { id: 3, title: 'Análise do Contexto', short: 'Passo 3' },
-    { id: 4, title: 'Plano de Ações', short: 'Passo 4' },
-    { id: 5, title: 'Implementação', short: 'Passo 5' },
-    { id: 6, title: 'Revisão e Geração', short: 'Finalizar' }
+    { id: 1, title: 'Delimitação do Problema-objeto', short: 'Passo 1' },
+    { id: 2, title: 'Análise Situacional', short: 'Passo 2' },
+    { id: 3, title: 'Definição de Objetivos', short: 'Passo 3' },
+    { id: 4, title: 'Estratégias e Ações', short: 'Passo 4' },
+    { id: 5, title: 'Monitoramento e Avaliação', short: 'Passo 5' },
+    { id: 6, title: 'Implementação e Sustentabilidade', short: 'Passo 6' },
+    { id: 7, title: 'Finalização', short: 'Finalizar' }
   ];
 
   return (
@@ -120,7 +121,7 @@ const Header = ({ currentStep, setCurrentStep, onGeneratePDF, onSaveData, onRese
               onClick={onGeneratePDF}
               size="sm"
               className="bg-green-600 hover:bg-green-700 text-white"
-              disabled={progress < 50}
+              disabled={progress < 30}
             >
               <Download className="h-4 w-4 mr-1" />
               <span className="hidden sm:inline">Gerar PDF</span>

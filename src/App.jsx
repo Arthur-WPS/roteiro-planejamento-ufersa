@@ -3,6 +3,11 @@ import { DataProvider } from './context/DataContext';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Step1 from './components/steps/Step1';
+import Step2 from './components/steps/Step2';
+import Step3 from './components/steps/Step3';
+import Step4 from './components/steps/Step4';
+import Step5 from './components/steps/Step5';
+import Step6 from './components/steps/Step6';
 import StepFinalization from './components/steps/StepFinalization';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -11,38 +16,21 @@ import './App.css';
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
 
-  // Componentes temporários para os outros passos
-  const StepPlaceholder = ({ stepNumber, title }) => (
-    <div className="max-w-4xl mx-auto text-center space-y-6 py-12">
-      <div className="p-8 bg-gray-50 rounded-lg">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Passo {stepNumber}: {title}
-        </h1>
-        <p className="text-lg text-gray-600 mb-6">
-          Este passo está em desenvolvimento e será implementado em breve.
-        </p>
-        <div className="bg-white p-6 rounded-lg border-2 border-dashed border-gray-300">
-          <p className="text-gray-500">
-            Formulários e campos específicos para este passo serão adicionados aqui.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderCurrentStep = () => {
+  const renderStep = () => {
     switch (currentStep) {
       case 1:
         return <Step1 />;
       case 2:
-        return <StepPlaceholder stepNumber={2} title="Definição de Identidade e Horizontes" />;
+        return <Step2 />;
       case 3:
-        return <StepPlaceholder stepNumber={3} title="Análise do Contexto" />;
+        return <Step3 />;
       case 4:
-        return <StepPlaceholder stepNumber={4} title="Elaboração do Plano de Ações Estratégicas" />;
+        return <Step4 />;
       case 5:
-        return <StepPlaceholder stepNumber={5} title="Implementação do Planejamento" />;
+        return <Step5 />;
       case 6:
+        return <Step6 />;
+      case 7:
         return <StepFinalization />;
       default:
         return <Step1 />;
@@ -62,10 +50,10 @@ function App() {
   };
 
   const handleGeneratePDF = () => {
-    setCurrentStep(6); // Navegar para a página de finalização
+    setCurrentStep(7); // Navegar para a página de finalização
   };
 
-  const canGoNext = currentStep < 6;
+  const canGoNext = currentStep < 7;
   const canGoPrevious = currentStep > 1;
 
   return (
@@ -87,7 +75,7 @@ function App() {
           />
           
           <main className="flex-1 p-8">
-            {renderCurrentStep()}
+            {renderStep()}
             
             {/* Navegação entre passos */}
             <div className="max-w-4xl mx-auto mt-12 flex justify-between">
@@ -118,3 +106,4 @@ function App() {
 }
 
 export default App;
+
